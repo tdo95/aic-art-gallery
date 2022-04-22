@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    	<meta charset="utf-8">
+    	<meta name="description" content="Your description goes here">
+    	<meta name="keywords" content="one, two, three">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+
+		<title>Blank Template</title>
+
+		<!-- external CSS link -->
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+		<section id="landing" class="grid">
+			<h1>VIRTUAL ART GALLERY</h1>
+			<p>Currently displaying art from the Art Institiute of Chicago</p>
+			<span>Pick a department collection to view:</span>
+			<button class="department">Arts of Africa</button>
+			<button class="department">Comtemperary Art</button>
+			<button id='fetch'>Fetch</button>
+		</section>
+		<section id="collection-room" class="grid">
+			<div class="wall-wrapper">
+				<div class="wall left-wall">
+					<div class="frame-0 frame"></div>
+				</div>
+				<div class="wall center-wall">
+					<div class="frame-1 frame"></div>
+					<div class="frame-2 frame"></div>
+					<div class="frame-3 frame"></div>
+				</div>
+				<div class="wall right-wall">
+					<div class="frame-4 frame"></div>
+				</div>
+				<div class="wall" id="floor"></div>
+			</div>
+			
+			<h2 class="hidden">Title</h2>
+			<img class="hidden" src="" alt="">
+			<p class="hidden" id="artist"></p>
+		</section>
+		<script type="text/javascript" src="js/main.js"></script>
+	</body>
+</html>

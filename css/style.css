@@ -1,0 +1,116 @@
+/* Box Model Hack */
+* {
+     box-sizing: border-box;
+}
+
+/* Clear fix hack */
+.clearfix:after {
+     content: ".";
+     display: block;
+     clear: both;
+     visibility: hidden;
+     line-height: 0;
+     height: 0;
+}
+
+.clear {
+	clear: both;
+}
+
+/******************************************
+/* BASE STYLES
+/*******************************************/
+
+.grid {
+     width: 100%;
+     height: 500px;
+     border: black thin solid;
+     /* padding: 3% 0%; */
+     overflow: hidden;
+}
+.wall {
+     width: 400px;
+     height: 85%;
+     border: blue medium solid;
+     position: absolute;
+     top: 5%;
+     transform: perspective(800px);
+
+     display: flex;
+     justify-content: space-around;
+     align-items: center;   
+}
+.wall.fill-screen{
+     -webkit-transition: 1s;
+     -moz-transition: 1s;
+     -ms-transition: 1s;
+     -o-transition: 1s;
+     transition: 1s;
+     width: 100%;
+     height: 100%;
+
+     top: 0;
+     left: 0;
+     right: 0;
+
+     transform: none;
+     z-index: 9;
+}
+.right-wall {
+     transform: perspective(800px)  rotateY(-30deg);
+     right: -2%;
+     background-color: gray;
+     z-index: 2;
+}
+.center-wall {
+     transform: perspective(800px) translateZ(-100px);
+     width: 100%;
+     padding: 0 20%;
+     background-color: gainsboro;
+     z-index: 1;
+
+}
+.left-wall {
+     transform: perspective(800px)  rotateY(30deg);
+     left: -2%;
+     background-color: gray;
+     z-index: 2;
+}
+#floor{
+     background-color: honeydew;
+     width: 100%;
+     top: 45%;
+     transform: perspective(800px) rotateX(-105deg);
+}
+.wall-wrapper {
+     border: purple thin solid;
+     justify-content: space-between;
+     height: 100%; 
+     width: 100%; 
+     position: relative
+}
+.frame{
+     height: 200px;
+     width: 250px;
+     background-color: black;
+
+     box-shadow: 0 0 3px black,
+                 0 160px 0 -70px white;
+}
+.art-image{
+     width: 100%;
+     height: 100%;
+}
+.hidden {
+     display: none;
+}
+
+
+/******************************************
+/* LAYOUT
+/*******************************************/
+
+
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/
