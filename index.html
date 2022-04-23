@@ -14,6 +14,7 @@
 		<link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
+		<!-- LANDING PAGE -->
 		<section id="landing" class="grid">
 			<h1>VIRTUAL ART GALLERY</h1>
 			<p>Currently displaying art from the Art Institiute of Chicago</p>
@@ -22,28 +23,39 @@
 			<button class="department">Comtemperary Art</button>
 			<button id='fetch'>Fetch</button>
 		</section>
-		<section id="collection-room" class="grid">
+
+		<!-- GALLERY ROOM -->
+		<section id="gallery-room" class="grid">
 			<div class="wall-wrapper">
-				<div class="wall left-wall">
+				<!-- LEFT WALL -->
+				<div class="wall wall-grid left-wall">
 					<div class="frame-0 frame"></div>
 				</div>
-				<div class="wall center-wall">
-					<div class="frame-1 frame"></div>
-					<div class="frame-2 frame"></div>
-					<div class="frame-3 frame"></div>
+				<!-- CENTER WALL -->
+				<div class="wall wall-grid center-wall">
+
+					<!-- center wall thumbnail frames -->
+					<div class="frame-1 center-frame frame"></div>
+					<div class="frame-2 center-frame frame"></div>
+					<div class="frame-3 center-frame frame"></div>
+
+					<!-- carousel elements -->
 					<button class="hidden wall-art left-arrow">Left Arrow</button>
 					<h2 class="hidden wall-art art-title">Title</h2>
 					<img class="hidden wall-art art-pic" src="" alt="">
 					<p class="hidden wall-art art-artist" id="artist"></p>
 					<button class="hidden wall-art right-arrow">Right Arrow</button>
+					<button class="hidden wall-art back-arrow">Back</button>
 				</div>
-				<div class="wall right-wall">
+				<!-- RIGHT WALL -->
+				<div class="wall wall-grid right-wall">
 					<div class="frame-4 frame"></div>
 				</div>
-				<div class="wall" id="floor"></div>
+				<!-- FLOOR -->
+				<div class="wall-grid" id="floor"></div>
+				<!-- refresh button -->
+				<button class="refresh-button">refresh</button>
 			</div>
-			
-
 		</section>
 		<script type="text/javascript" src="js/main.js"></script>
 	</body>

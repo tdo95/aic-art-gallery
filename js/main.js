@@ -1,24 +1,38 @@
 
-
-
 let count = 0
 const MAX_ARTWORKS = 5
 // Max start point should be defined based on the size of department art collection (Too high numbers will not register with the api's 'from' parameter)
 const MAX_START_POINT = 300
-
 let departmentId = ''
-
 let departmentKeys = {'Arts of Africa': 'PC-1', 'Comtemperary Art': 'PC-8'}
-
 let arrOfArtworks = null;
 
-document.querySelectorAll('.department').forEach((el) => el.addEventListener('click', setDeparmentId))
-document.querySelector('#fetch').addEventListener('click', fetchArtworks)
-document.querySelectorAll('.wall').forEach((el) => el.addEventListener('click', hideImgThumbnails))
 
-document.querySelector('.right-arrow').addEventListener('click', moveCarouselRight)
-document.querySelector('.left-arrow').addEventListener('click', moveCarouselLeft)
-                  
+//Set Department ID
+document.querySelectorAll('.department').forEach((el) => el.addEventListener('click', setDeparmentId))
+//Get list of artworks
+document.querySelector('#fetch').addEventListener('click', fetchArtworks)
+//Hide center wall thumbnail frames
+document.querySelectorAll('.wall').forEach((el) => { 
+    console.log(el); 
+    el.addEventListener('click', hideImgThumbnails);
+})
+//Carousel Arrows
+document.querySelector('.right-arrow').addEventListener('click', function(e) {
+    moveCarouselRight();
+    e.stopPropagation()
+})
+document.querySelector('.left-arrow').addEventListener('click', function(e) {
+    moveCarouselLeft();
+    e.stopPropagation()
+})
+//Back Button
+document.querySelector('.back-arrow').addEventListener('click', function(e) {
+    backToGallery(); 
+    e.stopPropagation();
+})
+
+
 function setDeparmentId() {
     departmentId = departmentKeys[this.innerText]
     console.log(departmentId)
@@ -49,21 +63,15 @@ function fetchArtworks() {
             img.classList.add('art-image')
             document.querySelector(`.frame-${i}`).appendChild(img)
         }
-        
-
-
-        //showArtworks(obj.data);
-             
-        
-        
     })
     .catch(err => {console.log(err)})
 }
 
 
 // Takes in an array of artworks and generates on screen each item
-function showArtworks(arr) {
+function showArtCarousel(arr) {
 
+    console.log('carousel called!')
     // Reset count
     if(count > (MAX_ARTWORKS - 1)) count = 0
     else if(count < 0) count = MAX_ARTWORKS - 1
@@ -72,13 +80,10 @@ function showArtworks(arr) {
     fetch(`${arr[count].api_link}?fields=title,image_id,thumbnail,department_title,artist_display`)
     .then(res => res.json())
     .then(item => {
-        console.log(item)
+        // console.log(item)
 
-        // Unhide elements
+        // Unhide carousel elements
         let elements = document.querySelectorAll('.wall-art')
-
-    
-
         elements.forEach((el, i) => {
             el.classList.remove('hidden')
         
@@ -90,29 +95,44 @@ function showArtworks(arr) {
         document.querySelector('.art-pic').alt = item.data.thumbnail.alt_text
         document.querySelector('#artist').innerText = item.data.artist_display;
 
-        
-
     })
     .catch(err => {console.log(err)})
 }
 
 function moveCarouselLeft() {
     count--; 
-    showArtworks(arrOfArtworks);
+    showArtCarousel(arrOfArtworks);
 }
 function moveCarouselRight() { 
     count++; 
-    showArtworks(arrOfArtworks);
+    showArtCarousel(arrOfArtworks);
+}
+function backToGallery() {
+
+    console.log('back to gallery called!')
+    // Hide carousel elements
+    let elements = document.querySelectorAll('.wall-art')
+    elements.forEach((el, i) => {
+        el.classList.add('hidden')
+    })
+    // Move wall back into place 
+    document.querySelector('.center-wall').classList.remove('fill-screen')
+
+    // Show center wall thumbnail frames
+    let thumbnails = document.querySelectorAll('.center-frame')
+    thumbnails.forEach((el, i) => {
+        el.classList.remove('hidden')
+    })
+
 }
 
 function hideImgThumbnails() {
+    console.log('hide thumbnails called!')
     let imgs = document.querySelector('.center-wall').children
-    console.log(imgs.length, imgs)
     for(let i = 0; i < imgs.length; i++) {
         imgs[i].classList.add('hidden');
     }
     imgs = document.querySelector('.center-wall').classList.add('fill-screen')
 
-    
-    showArtworks(arrOfArtworks);
+    showArtCarousel(arrOfArtworks);
 }
