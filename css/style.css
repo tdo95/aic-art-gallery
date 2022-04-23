@@ -108,9 +108,10 @@
      z-index: 3;
 }
 .collection-title {
-     position: absolute;
-     bottom: 2%;
-     right: 50%;
+     position: relative;
+     /* top: 425px; */
+     top: 86%;
+     text-align: center;
      z-index: 3;
 }
 

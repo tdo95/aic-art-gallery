@@ -38,6 +38,7 @@ document.querySelector('.refresh-button').addEventListener('click', fetchArtwork
 
 function setDeparmentId() {
     departmentId = departmentKeys[this.innerText]
+    document.querySelector('.collection-title').innerText = this.innerText;
     console.log(departmentId)
 }
 function fetchArtworks() {
