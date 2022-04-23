@@ -107,7 +107,12 @@
      right: 15%;
      z-index: 3;
 }
-
+.collection-title {
+     position: absolute;
+     bottom: 2%;
+     right: 50%;
+     z-index: 3;
+}
 
 .hidden {
      display: none;
