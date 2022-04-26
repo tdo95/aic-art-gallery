@@ -9,19 +9,38 @@
 
 		<title>Blank Template</title>
 
+		<!-- fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Libre+Bodoni:wght@700&display=swap" rel="stylesheet">
 		<!-- external CSS link -->
 		<link rel="stylesheet" href="css/normalize.css">
 		<link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
 		<!-- LANDING PAGE -->
-		<section id="landing" class="grid">
-			<h1>VIRTUAL ART GALLERY</h1>
-			<p>Currently displaying art from the Art Institiute of Chicago</p>
-			<span>Pick a department collection to view:</span>
-			<button class="department">Arts of Africa</button>
-			<button class="department">Comtemperary Art</button>
-			<button id='fetch'>Fetch</button>
+		<section class="landing grid">
+			<section class="title">
+				<h1>VIRTUAL <br> ART <br> GALLERY</h1>
+			</section>
+			<section class="landing-right">
+				<p>Currently displaying art from <a href="https://www.artic.edu/" target="_blank">The Art Institiute of Chicago</a></p>
+				<div class="collections">
+					<span>select a collection</span>
+					
+						<input type="radio" name="departments" class="dept-radio" id="arts-of-africa">
+						<label class="department" for="arts-of-africa">Arts of Africa</label>
+						<input type="radio" name="departments" class="dept-radio" id="comtemperary-art">
+						<label class="department" for="comtemperary-art">Comtemperary Art</label>
+						<input type="radio" name="departments" class="dept-radio" id="modern-art">
+						<label class="department" for="modern-art">Modern Art</label>
+						<input type="radio" name="departments" class="dept-radio" id="arts-of-asia">
+						<label class="department" for="arts-of-asia">Arts of Asia</label>
+					
+					<a href="#gallery-room"><button id='fetch'>view collection</button></a>
+					
+				</div>
+			</section>
 		</section>
 
 		<!-- GALLERY ROOM -->
@@ -39,13 +58,6 @@
 					<div class="frame-2 center-frame frame"></div>
 					<div class="frame-3 center-frame frame"></div>
 
-					<!-- carousel elements -->
-					<button class="hidden wall-art left-arrow">Left Arrow</button>
-					<h2 class="hidden wall-art art-title">Title</h2>
-					<img class="hidden wall-art art-pic" src="" alt="">
-					<p class="hidden wall-art art-artist" id="artist"></p>
-					<button class="hidden wall-art right-arrow">Right Arrow</button>
-					<button class="hidden wall-art back-arrow">Back</button>
 				</div>
 				<!-- RIGHT WALL -->
 				<div class="wall wall-grid right-wall">
@@ -54,9 +66,26 @@
 				<!-- FLOOR -->
 				<div class="wall-grid" id="floor"></div>
 				<!-- refresh button -->
-				<button class="refresh-button">refresh</button>
+				<button class="refresh-button">more artworks</button>
 				<!-- collection title -->
 				<h2 class="collection-title"></h2>
+			</div>
+			<div class="carousel-wall hidden wall-art">
+				<!-- carousel elements -->
+				<div class="carousel-display">
+					<div class="button-wrapper left">
+						<button class="hidden wall-art left-arrow">&#8678;</button>
+					</div>
+					<div class="art-info">
+						<h2 class="hidden wall-art art-title"></h2>
+						<img class="hidden wall-art art-pic" src="" alt="">
+						<p class="hidden wall-art art-artist" id="artist"></p>
+					</div>
+					<div class="button-wrapper right">
+						<button class="hidden wall-art right-arrow"> &#8680;</button>
+					</div>
+				</div>
+				<button class="hidden wall-art back-arrow">BACK</button>
 			</div>
 		</section>
 		<script type="text/javascript" src="js/main.js"></script>

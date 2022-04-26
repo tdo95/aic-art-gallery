@@ -1,12 +1,12 @@
 
-let count = 0
-const MAX_ARTWORKS = 5
+
 // Max start point should be defined based on the size of department art collection (Too high numbers will not register with the api's 'from' parameter)
 const MAX_START_POINT = 300
 let departmentId = ''
-let departmentKeys = {'Arts of Africa': 'PC-1', 'Comtemperary Art': 'PC-8'}
+let departmentKeys = {'Arts of Africa': 'PC-1', 'Comtemperary Art': 'PC-8', 'Modern Art': 'PC-11', 'Arts of Asia':'PC-7'}
 let arrOfArtworks = null;
-
+let count = 0
+const MAX_ARTWORKS = 5
 
 //Set Department ID
 document.querySelectorAll('.department').forEach((el) => {
@@ -14,7 +14,7 @@ document.querySelectorAll('.department').forEach((el) => {
 })
 //Get list of artworks
 document.querySelector('#fetch').addEventListener('click', fetchArtworks)
-//Hide center wall thumbnail frames
+//Display art wall carousel
 document.querySelectorAll('.wall').forEach((el) => { 
     el.addEventListener('click', hideImgThumbnails);
 })
@@ -80,12 +80,6 @@ function showArtCarousel(arr) {
     .then(res => res.json())
     .then(item => {
 
-        // Unhide carousel elements
-        let elements = document.querySelectorAll('.wall-art')
-        elements.forEach((el, i) => {
-            el.classList.remove('hidden')
-        })
-
         //Display art details
         document.querySelector('.art-title').innerText = item.data.title;
         document.querySelector('.art-pic').src = `https://www.artic.edu/iiif/2/${item.data.image_id}/full/400,/0/default.jpg`
@@ -96,10 +90,12 @@ function showArtCarousel(arr) {
     .catch(err => {console.log(err)})
 }
 function moveCarouselLeft() {
+    //Moves to previous item
     count--; 
     showArtCarousel(arrOfArtworks);
 }
-function moveCarouselRight() { 
+function moveCarouselRight() {
+    //Moves to next item
     count++; 
     showArtCarousel(arrOfArtworks);
 }
@@ -111,23 +107,20 @@ function backToGallery() {
     elements.forEach((el, i) => {
         el.classList.add('hidden')
     })
+    document.querySelector('.carousel-wall').classList.remove('viewable')
 
-    // Move wall back into place 
-    document.querySelector('.center-wall').classList.remove('fill-screen')
-
-    // Show center wall thumbnail frames
-    let thumbnails = document.querySelectorAll('.center-frame')
-    thumbnails.forEach((el, i) => {
-        el.classList.remove('hidden')
-    })
 }
 function hideImgThumbnails() {
     console.log('hide thumbnails called!')
-    let imgs = document.querySelector('.center-wall').children
-    for(let i = 0; i < imgs.length; i++) {
-        imgs[i].classList.add('hidden');
-    }
-    imgs = document.querySelector('.center-wall').classList.add('fill-screen')
+    
+    // Unhide carousel elements
+    let elements = document.querySelectorAll('.wall-art')
+    elements.forEach((el, i) => {
+        el.classList.remove('hidden')
+    })
 
+    let reflow = document.querySelector('.carousel-wall').offsetHeight
+
+    document.querySelector('.carousel-wall').classList.add('viewable')
     showArtCarousel(arrOfArtworks);
 }
