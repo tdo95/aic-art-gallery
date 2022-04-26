@@ -1,7 +1,7 @@
 # AIC Virtual Art Gallery 🖼
 AIC virtual art gallery is a web application that allows you to view art collections held by The Art Institute of Chicago
 ###
-![]()
+![AIC Gallery Demo](https://github.com/tdo95/aic-art-gallery/blob/main/virtual-art-gallery-demo.gif)
 ## How it's made  🏗
 **Tech Used:** HTML, CSS, JavaScript, [AIC API](https://api.artic.edu/docs/#introduction) <br><br>
 This project uses procederal programming to create functions that perform different tasks depending on how the users interacts with the application. Event listeners were attached to different buttons on the programs interface to fetch and display the artworks where appropriate.<br><br>
