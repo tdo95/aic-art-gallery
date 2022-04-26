@@ -1,5 +1,4 @@
 
-
 // Max start point should be defined based on the size of department art collection (Too high numbers will not register with the api's 'from' parameter)
 const MAX_START_POINT = 300
 let departmentId = ''
@@ -16,7 +15,7 @@ document.querySelectorAll('.department').forEach((el) => {
 document.querySelector('#fetch').addEventListener('click', fetchArtworks)
 //Display art wall carousel
 document.querySelectorAll('.wall').forEach((el) => { 
-    el.addEventListener('click', hideImgThumbnails);
+    el.addEventListener('click', showCarouselElements);
 })
 //Carousel Arrows
 document.querySelector('.right-arrow').addEventListener('click', function(e) {
@@ -32,8 +31,17 @@ document.querySelector('.back-arrow').addEventListener('click', function(e) {
     backToGallery(); 
     e.stopPropagation();
 })
-// Refresh Button
+// Fetch new random set of artworks
 document.querySelector('.refresh-button').addEventListener('click', fetchArtworks)
+//Select a particualar frame(artwork) and have it appear in caoursel
+document.querySelectorAll('.frame').forEach(el => {
+    el.addEventListener('click', function(e){
+        //Set artwork in coursel
+        count = Number(this.id.split('-')[1]);
+    })
+})
+
+
 
 
 function setDeparmentId() {
@@ -48,8 +56,6 @@ function fetchArtworks() {
     fetch(`https://api.artic.edu/api/v1/artworks/search?q=&query[term][department_id]=${departmentId}&size=${MAX_ARTWORKS}&from=${randomStart}`)
     .then(res => res.json())
     .then(obj => {
-        console.log(obj.data, obj.data.length);
-
         // Stores list of artworks in a global variable that can be referenced later
         arrOfArtworks = obj.data;
 
@@ -69,8 +75,7 @@ function fetchArtworks() {
     .catch(err => {console.log(err)})
 }
 // Takes in an array of artworks and generates each peice of art work on screen one at a time
-function showArtCarousel(arr) {
-    console.log('carousel called!')
+function showArtPeice(arr) {
 
     // Reset count to cycle through existing indexes 
     if(count > (MAX_ARTWORKS - 1)) count = 0
@@ -79,6 +84,10 @@ function showArtCarousel(arr) {
     fetch(`${arr[count].api_link}?fields=title,image_id,thumbnail,department_title,artist_display`)
     .then(res => res.json())
     .then(item => {
+
+        //Ensure title fits page
+        if(item.data.title.length > 150) document.querySelector('.art-title').style.fontSize = "20px"
+        else document.querySelector('.art-title').style.fontSize = "30px"
 
         //Display art details
         document.querySelector('.art-title').innerText = item.data.title;
@@ -92,26 +101,22 @@ function showArtCarousel(arr) {
 function moveCarouselLeft() {
     //Moves to previous item
     count--; 
-    showArtCarousel(arrOfArtworks);
+    showArtPeice(arrOfArtworks);
 }
 function moveCarouselRight() {
     //Moves to next item
     count++; 
-    showArtCarousel(arrOfArtworks);
+    showArtPeice(arrOfArtworks);
 }
 function backToGallery() {
-    console.log('back to gallery called!')
-
     // Hide carousel elements
     let elements = document.querySelectorAll('.wall-art')
     elements.forEach((el, i) => {
         el.classList.add('hidden')
     })
     document.querySelector('.carousel-wall').classList.remove('viewable')
-
 }
-function hideImgThumbnails() {
-    console.log('hide thumbnails called!')
+function showCarouselElements() {
     
     // Unhide carousel elements
     let elements = document.querySelectorAll('.wall-art')
@@ -119,8 +124,9 @@ function hideImgThumbnails() {
         el.classList.remove('hidden')
     })
 
+    // Gives the system a second to reprocess so the 'viewable' transition can run
     let reflow = document.querySelector('.carousel-wall').offsetHeight
 
     document.querySelector('.carousel-wall').classList.add('viewable')
-    showArtCarousel(arrOfArtworks);
+    showArtPeice(arrOfArtworks);
 }
