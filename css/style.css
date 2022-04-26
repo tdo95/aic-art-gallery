@@ -181,6 +181,7 @@
 .art-pic {
      height: 65%;
      max-width: 90%;
+     box-shadow: 0 0 0 3px black;
 }
 .art-info{
      flex-basis: 60%;
