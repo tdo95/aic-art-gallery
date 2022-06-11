@@ -38,9 +38,6 @@
      align-items: center;  
      flex-wrap: wrap; 
 }
-/* .right-wall:hover, .left-wall:hover{
-     box-shadow: 0 0 8px 10px rgba(0, 0, 0, .8);
-} */
 #gallery-room {
      background-color: #b9c2bd;
      position: relative;
@@ -138,20 +135,20 @@
      font-size: 90px;
      color: rgba(185, 185, 185, 0);
      text-shadow: 
-     /* Gray 3d background letter */
-     1px -1px 1px rgba(198, 198, 198, 1),
-     2px -2px 1px rgba(177, 177, 177, 1),
-     3px -3px 1px rgba(155, 155, 155, 1),
-     4px -4px 1px rgba(145, 145, 145, 1),
-     5px -5px 1px rgba(115, 115, 115, 1),
-     6px -6px 1px rgba(88, 88, 88, 1),
-     7px -7px 1px rgba(58, 58, 58, 1),
-     
-     /* Drop Shadow */
-     7px -7px 8px rgba(0, 0, 0, .2),
-     11px -11px 5px rgba(0, 0, 0, .4),
-     12px -12px 30px rgba(0, 0, 0, .3),
-     16px -16px 30px rgba(0, 0, 0, .3);
+                  /* Gray 3d background letter */
+                  1px -1px 1px rgba(198, 198, 198, 1),
+                  2px -2px 1px rgba(177, 177, 177, 1),
+                  3px -3px 1px rgba(155, 155, 155, 1),
+                  4px -4px 1px rgba(145, 145, 145, 1),
+                  5px -5px 1px rgba(115, 115, 115, 1),
+                  6px -6px 1px rgba(88, 88, 88, 1),
+                  7px -7px 1px rgba(58, 58, 58, 1),
+                  
+                  /* Drop Shadow */
+                  7px -7px 8px rgba(0, 0, 0, .2),
+                  11px -11px 5px rgba(0, 0, 0, .4),
+                  12px -12px 30px rgba(0, 0, 0, .3),
+                  16px -16px 30px rgba(0, 0, 0, .3);
 }
 .carousel-wall {
      position: absolute;
@@ -398,6 +395,14 @@ html {
      }    
 }
 @media screen and (max-width: 560px) {
+     h1 {
+          text-shadow: 
+                       /* Main text outline */
+                       1px 0 1px rgba(145, 145, 145, .5),
+                       -1px 0 1px rgba(145, 145, 145, .5),
+                       0 1px 1px rgba(145, 145, 145, .5),
+                       0 -1px 1px rgba(145, 145, 145, .5);
+     }
      .landing .title h1 {
           font-size: 50px;
           width: 350px;
