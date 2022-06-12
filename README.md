@@ -1,5 +1,6 @@
 # AIC Virtual Art Gallery 🖼
-AIC virtual art gallery is a web application that allows you to view art collections held by The Art Institute of Chicago
+AIC virtual art gallery is a web application that allows you to view art collections held by The Art Institute of Chicago. 
+<br><br>Try it out here: [Link To Live Site](tdo95.github.io/aic-art-gallery/) ✨
 ###
 ![AIC Gallery Demo](https://github.com/tdo95/aic-art-gallery/blob/main/virtual-art-gallery-demo.gif)
 ## How it's made  🏗
